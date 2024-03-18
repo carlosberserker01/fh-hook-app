@@ -24,7 +24,7 @@ export const TodoAdd = ({ onNewTodo }) => {
     <form onSubmit={ onFormSubmit }>
       <input 
         type="text" 
-        placeholder="¿Que hay que hacer?"
+        placeholder="Escriba una nueva tarea..."
         className="form-control"
         name="description"
         value={ description }
@@ -33,16 +33,9 @@ export const TodoAdd = ({ onNewTodo }) => {
 
       <button
         type="submit"
-        className="btn btn-outline-primary mt-1"
+        className="btn btn-primary mt-2"
       >
         Agregar
-      </button>
-
-      <button
-        className="btn btn-outline-primary mt-1"
-        onClick={ onResetForm }
-      >
-        Reset
       </button>
     </form>
   )

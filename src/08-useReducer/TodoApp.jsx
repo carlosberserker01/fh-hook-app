@@ -1,50 +1,44 @@
-import { useReducer } from "react"
-import { todoReducer } from "./todoReducer"
 import { TodoList } from "./TodoList"
 import { TodoAdd } from "./TodoAdd"
-
-const initialState = [
-  {
-    id: new Date().getTime(),
-    description: 'Recolectar la piedra del alma',
-    done: false
-  },
-  {
-    id: new Date().getTime() * 3,
-    description: 'Recolectar la piedra del tiempo',
-    done: false
-  }
-]
+import { useTodos } from "../hooks"
 
 export const TodoApp = () => {
 
-  const [ todos, dispatch ] = useReducer( todoReducer, initialState )
-
-  const handleNewTodo = ( newTodo ) => {
-    console.log( newTodo )
-  }
+  const { todos, todosCount, pendingTodosCount, handleNewTodo, removeTodo, onToggleTodo } = useTodos()
 
   return (
     <>
-      <h1>TodoApp: 10, <small>pendientes: 2</small></h1>
+      <h1>TodoApp: {todosCount}</h1>
+      <small>Pendientes: {pendingTodosCount} {pendingTodosCount > 0 ? '😫' : '😁'}</small>
       <hr />
 
       <div className="row">
-        <div className="col-7">
-          <TodoList 
-            todos={todos}
-          />
-        </div>
-
-        <div className="col-5">
-          <h4>Agregar TODO</h4>
-          <hr />
+        <div>
+          <h4>Agregar Tarea</h4>
           <TodoAdd 
             onNewTodo={ handleNewTodo }
           />
         </div>
       </div>
+      <hr />
+      <div className="row mt-5">
+        <div>
+          <TodoList 
+            todos={todos}
+            removeTodo={ removeTodo }
+            onToggleTodo={ onToggleTodo }
+          />
+        </div>
+      </div>
 
+      <footer 
+        style={{ position: 'absolute', bottom: 8, right: 8}}
+      >
+        <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="react-logo" height="32px"/>
+        {` by Carlos Lopez a.k.a. `}
+        <code>devserker</code>
+      </footer>
+      
     </>
   )
 }
