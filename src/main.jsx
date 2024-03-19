@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, RouterProvider, createBrowserRouter } from 'react-router-dom';
 // import { HooksApp } from './HooksApp'
 // import { CounterApp } from './01-useState/CounterApp'
 // import { CounterWithCustomHook } from './01-useState/CounterWithCustomHook'
@@ -19,11 +19,24 @@ import { MainApp } from './09-useContext/MainApp'
 
 
 import './index.css'
+import { HomePage } from './09-useContext/HomePage';
+import { LoginPage } from './09-useContext/LoginPage';
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <HomePage />,
+//   },
+//   {
+//     path: "/login",
+//     element: <LoginPage />,
+//   },
+// ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    {/* <React.StrictMode> */}
+    {/* // <React.StrictMode> */}
       <MainApp />
-    {/* </React.StrictMode>, */}
+    {/* // </React.StrictMode> */}
   </BrowserRouter>
 )
